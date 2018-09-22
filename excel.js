@@ -47,42 +47,93 @@ function ExportToTable() {
 
     function viewXLSX(reader,data)
     {
-        console.log("view");
         var workbook = XLSX.read(data, { type: 'binary' }); 
-        var sheet_name_list = workbook.SheetNames;  
-        var cnt = 0;
-        sheet_name_list.forEach(function (y) 
-                { 
-                    /*Iterate through all sheets*/    
-                    var exceljson = XLSX.utils.sheet_to_json(workbook.Sheets[y]); 
-                    if (exceljson.length > 0 && cnt == 0) {  
-                        BindTable(exceljson, '#exceltable');  
-                        cnt++;  
-                        document.getElementById("jsonformat").innerHTML = JSON.stringify(exceljson, undefined, 2);
-                    }  
-                });  
+        var sheet_name_list = workbook.SheetNames;
+        var sheet_count=sheet_name_list.length;
+        var c=2;
+        alert("please select sheet number from dropdown "+sheet_count);
+        while(c<=sheet_count)
+        {
+            var newOption = document.createElement("option");
+            newOption.text = 'Sheet'+c;
+            newOption.value = c;
+            selector.appendChild(newOption);
+            c++;
+        }
+        document.getElementById("selector").onchange = function()
+        {
+            var cnt = 1;
+            var sheetnum=document.getElementById("selector").value;
+            console.log("selected sheet is"+ sheetnum);
+            sheet_name_list.forEach(function (y) { /*Iterate through all sheets*/    
+                             var exceljson = XLSX.utils.sheet_to_row_object_array(workbook.Sheets[y]);
+                            while(cnt<=sheet_count)
+                            {  if(exceljson.length > 0 && cnt == sheetnum) {  
+                                // console.log("hi");
+                                BindTable(exceljson, '#exceltable');  
+                                document.getElementById("jsonformat").innerHTML = JSON.stringify(exceljson, undefined, 2);
+                                cnt++; 
+                            }
+                            cnt++; 
+                            }  
+                            //
+                        }); 
+           
+        };
+
+        // var cnt = 0;
+        // sheet_name_list.forEach(function (y) 
+        //         { 
+        //             /*Iterate through all sheets*/    
+        //             var exceljson = XLSX.utils.sheet_to_json(workbook.Sheets[y]); 
+        //             if (exceljson.length > 0 && cnt == 0) {  
+        //                 BindTable(exceljson, '#exceltable');  
+        //                 cnt++;  
+        //                 document.getElementById("jsonformat").innerHTML = JSON.stringify(exceljson, undefined, 2);
+        //             }  
+        //         });  
                 $('#exceltable').show();  
                 
     }
+   
     function viewXLS(reader,data)
     {
         var workbook = XLS.read(data, { type: 'binary' });  
         var sheet_name_list = workbook.SheetNames;  
-        var cnt = 0; 
-        sheet_name_list.forEach(function (y) { /*Iterate through all sheets*/    
-                     var exceljson = XLS.utils.sheet_to_row_object_array(workbook.Sheets[y]);
-                    //  console.log(exceljson);
-                    // console.log("excel"+exceljson.length);
-                      if(exceljson.length > 0 && cnt == 0) {  
-                        // console.log("hi");
-                        BindTable(exceljson, '#exceltable');  
-                        document.getElementById("jsonformat").innerHTML = JSON.stringify(exceljson, undefined, 2);
-                        cnt++;  
-                    }  
-                    //
-                });  
-               
-                $('#exceltable').show();  
+        var sheet_count=sheet_name_list.length;
+        var c=2;
+        alert("please select sheet number from dropdown "+sheet_count);
+        while(c<=sheet_count)
+        {
+            var newOption = document.createElement("option");
+            newOption.text = 'Sheet'+c;
+            newOption.value = c;
+            selector.appendChild(newOption);
+            c++;
+        }
+        document.getElementById("selector").onchange = function()
+        {
+            var cnt = 1;
+            var sheetnum=document.getElementById("selector").value;
+            console.log("selected sheet is"+ sheetnum);
+            sheet_name_list.forEach(function (y) { /*Iterate through all sheets*/    
+                             var exceljson = XLS.utils.sheet_to_row_object_array(workbook.Sheets[y]);
+                            // console.log(exceljson);
+                            // console.log("excel length"+exceljson.length);
+                            while(cnt<=sheet_count)
+                            {  if(exceljson.length > 0 && cnt == sheetnum) {  
+                                // console.log("hi");
+                                BindTable(exceljson, '#exceltable');  
+                                document.getElementById("jsonformat").innerHTML = JSON.stringify(exceljson, undefined, 2);
+                                cnt++; 
+                            }
+                            cnt++; 
+                            }  
+                            //
+                        }); 
+           
+        };
+            $('#exceltable').show();  
                 
         
     }

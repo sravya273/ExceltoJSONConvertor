@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>ExcelDataReader</title>
-    <h1>EXCEL-JSON Converter</h1>
+    <h1>EXCEL to JSON Converter</h1>
     <script src="jquery-1.10.2.min.js" type="text/javascript"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.7.7/xlsx.core.min.js"></script>  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/xls/0.7.4-a/xls.core.min.js"></script> 
@@ -15,15 +15,17 @@
 <body background="background.png">
         <input type="file" id="excelfile" /> 
         <input type="button" id="viewfile" value="Export To Table" onclick="ExportToTable()" />  
-           <br />  
+          
+            <select id="selector">
+                <option value="0">Select Page</option>
+                <option value="1">Sheet1</option>
+            </select>
+            <br />  
            <br />
             <div class="formtable" id="left">
                 <table id="exceltable" class="tabledata">  </table> 
             </div>
             <div id="right"><pre id="jsonformat"></pre></div>
 
-           
-           
-       
 </body>
 </html>
