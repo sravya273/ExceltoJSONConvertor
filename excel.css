@@ -1,0 +1,81 @@
+#jsonformat
+{
+    width: 50%;
+    height: 470px;
+    padding: 12px 20px;
+    background-color: #f8f8f8;
+    overflow: auto;
+    
+}
+h1
+{
+    color:whitesmoke;
+    text-align: center;
+}
+#left{
+float: left;
+margin-right: 30px;
+
+}
+#right{
+    margin-left: 5px;
+    
+}
+.formtable {
+	height:500px;
+	overflow-y:auto;
+	overflow-x:hidden;
+	width:45%;
+    display:block;
+    /* border: 1px solid black; */
+
+}
+th {
+    height: 20px;
+    background-color: rgb(123, 169, 238);
+    color: black;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid black;
+    font-size: 20px;
+}
+td{
+    font-size: 20px;
+    padding:8px;
+}
+tr:nth-child(even) {background-color: #dedfd9;}
+tr:nth-child(odd) {background-color:rgb(247, 247, 168)}
+#excelfile {
+    background-color:rgb(123, 169, 238); 
+    border:1px solid black;
+    color: black;
+    padding: 10px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin-left: 15px;
+    border-radius: 2px;
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-right: 10%;
+   
+}
+
+#viewfile
+{
+    background-color:rgb(123, 169, 238); 
+    border:1px solid black;
+    color: black;
+    padding: 10px 14px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    margin-left: 15px;
+    border-radius: 2px;
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-right: 15%;
+}
+
